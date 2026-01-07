@@ -1,0 +1,59 @@
+1. class CaesarCipher {
+    public static void main(String[] args) {
+        String text = "HELLO";
+        int k = 3;
+        String enc = "", dec = "";
+
+        for (char c : text.toCharArray())
+            enc += (char) ((c - 'A' + k) % 26 + 'A');
+
+        for (char c : enc.toCharArray())
+            dec += (char) ((c - 'A' - k + 26) % 26 + 'A');
+
+        System.out.println("Encrypted: " + enc);
+        System.out.println("Decrypted: " + dec);
+    }
+}
+OUTPUT:
+Encrypted: KHOOR
+Decrypted: HELLO
+
+2.class SubstitutionCipher {
+    public static void main(String[] args) {
+        String text = "abc";
+        String key = "qwertyuiopasdfghjklzxcvbnm";
+        String enc = "", dec = "";
+
+        for (char c : text.toCharArray())
+            enc += key.charAt(c - 'a');
+
+        for (char c : enc.toCharArray())
+            dec += (char) ('a' + key.indexOf(c));
+
+        System.out.println("Encrypted: " + enc);
+        System.out.println("Decrypted: " + dec);
+    }
+}
+
+OUTPUT:
+Encrypted: qwe
+Decrypted: abc
+
+3.class HillCipher {
+    public static void main(String[] args) {
+        int[][] key = {{3, 3}, {2, 5}};
+        String text = "HI";
+        String enc = "";
+
+        int x = text.charAt(0) - 'A';
+        int y = text.charAt(1) - 'A';
+
+        enc += (char) ((key[0][0]*x + key[0][1]*y) % 26 + 'A');
+        enc += (char) ((key[1][0]*x + key[1][1]*y) % 26 + 'A');
+
+        System.out.println("Encrypted: " + enc);
+    }
+}
+
+OUTPUT:
+Encrypted: TC

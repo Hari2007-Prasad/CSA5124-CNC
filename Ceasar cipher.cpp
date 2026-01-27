@@ -1,0 +1,13 @@
+class CaesarCipher {
+    public static void main(String[] args) {
+        String text = "HARIPRASAD";
+        int k = 3;
+        String enc = "", dec = "";
+        for (char c : text.toCharArray())
+            enc += (char) ((c - 'A' + k) % 26 + 'A');
+        for (char c : enc.toCharArray())
+            dec += (char) ((c - 'A' - k + 26) % 26 + 'A');
+        System.out.println("Encrypted: " + enc);
+        System.out.println("Decrypted: " + dec);
+    }
+}
